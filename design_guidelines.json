@@ -1,0 +1,176 @@
+{
+  "project_name": "Ithateng By Ale",
+  "persona": "E1: The Anti-AI Designer",
+  "theme": "light",
+  "design_philosophy": {
+    "core_principle": "Fusion over Imitation: High-end Fashion Magazine x Spa Serenity",
+    "emotional_goal": "Confidence, Luxury, Serenity, Professionalism",
+    "anti_patterns": [
+      "No generic purple/teal CTAs",
+      "No 'Inter' font for headings",
+      "No centered-everything layouts",
+      "No heavy drop shadows (use borders/opacity instead)"
+    ]
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "weight": "600",
+      "tracking": "tracking-tight",
+      "usage": "H1, H2, H3, Hero Titles"
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "weight": "400",
+      "tracking": "tracking-wide",
+      "usage": "Paragraphs, UI Elements, Buttons"
+    },
+    "accents": {
+      "font_family": "Cormorant Garamond, serif",
+      "style": "italic",
+      "usage": "Blockquotes, Testimonials, Decorative text"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "#FDFCF8",
+      "foreground": "#1C1917",
+      "primary": "#1C1917",
+      "primary_foreground": "#FDFCF8",
+      "secondary": "#E6D2C9",
+      "secondary_foreground": "#4A3B32",
+      "accent": "#D4AF37",
+      "accent_foreground": "#FFFFFF",
+      "muted": "#F2F0E9",
+      "muted_foreground": "#78716C",
+      "border": "#E7E5E4",
+      "input": "#E7E5E4",
+      "ring": "#D4AF37"
+    },
+    "usage_rules": {
+      "primary_cta": "bg-primary text-primary-foreground hover:bg-primary/90 pill-shaped",
+      "secondary_cta": "border border-primary text-primary hover:bg-secondary/20 pill-shaped",
+      "sections": {
+        "hero": "bg-background",
+        "features": "bg-muted/30",
+        "footer": "bg-primary text-primary-foreground"
+      }
+    }
+  },
+  "layout_strategy": {
+    "spacing": {
+      "base": "Generous (2x standard)",
+      "container_padding": "p-6 md:p-12 lg:p-20",
+      "section_gap": "gap-16 md:gap-32"
+    },
+    "grid_system": {
+      "mode": "Bento Grid (Mode A)",
+      "columns": "grid-cols-1 md:grid-cols-12",
+      "gap": "gap-6 md:gap-8"
+    },
+    "container_width": "max-w-7xl mx-auto"
+  },
+  "component_guidelines": {
+    "buttons": {
+      "style": "rounded-full px-8 py-6 text-sm font-medium tracking-widest transition-transform hover:scale-105 active:scale-95",
+      "variants": ["default", "outline", "ghost"]
+    },
+    "cards": {
+      "style": "bg-white border border-border/40 p-8 rounded-xl hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500",
+      "content_padding": "p-8"
+    },
+    "inputs": {
+      "style": "bg-transparent border-b border-input px-0 py-4 rounded-none focus-visible:ring-0 focus-visible:border-primary placeholder:text-muted-foreground/50 font-serif text-lg"
+    },
+    "images": {
+      "style": "rounded-lg grayscale-[20%] hover:grayscale-0 transition-all duration-700 ease-out object-cover",
+      "aspect_ratios": {
+        "hero": "aspect-[3/4] md:aspect-[4/5]",
+        "gallery": "aspect-square",
+        "portrait": "aspect-[2/3]"
+      }
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Subtle noise overlay on solid backgrounds (opacity 0.02)",
+    "motion": {
+      "library": "framer-motion",
+      "default_transition": {
+        "duration": 0.8,
+        "ease": [0.22, 1, 0.36, 1]
+      },
+      "stagger": 0.1
+    },
+    "decorations": "Thin 1px lines, overlapping elements, italic serif annotations"
+  },
+  "image_urls": {
+    "hero_section": [
+      {
+        "url": "https://images.unsplash.com/photo-1560869683-f5d8bf564346?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Elegant woman near white wall, minimalist beauty",
+        "position": "Hero Main"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1765852549115-2ee9f55a1980?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Woman applying makeup at vanity",
+        "position": "Hero Secondary"
+      }
+    ],
+    "services": [
+      {
+        "category": "Lashes",
+        "url": "https://images.unsplash.com/photo-1645735123314-d11fcfdd0000?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Close up of long lashes"
+      },
+      {
+        "category": "Nails",
+        "url": "https://images.unsplash.com/photo-1672815554809-37e355eddd24?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Elegant nail art close up"
+      },
+      {
+        "category": "Makeup",
+        "url": "https://images.unsplash.com/photo-1747823490861-1fa6d0132fee?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Detailed eye makeup"
+      },
+      {
+        "category": "Wigs",
+        "url": "https://images.unsplash.com/photo-1695556746240-55d9f92faf43?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Woman with luxury wig"
+      }
+    ],
+    "about": [
+      {
+        "url": "https://images.unsplash.com/photo-1601288717546-f26deef256d7?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Chic waiting area interior",
+        "position": "About Main"
+      }
+    ],
+    "products": [
+      {
+        "url": "https://images.unsplash.com/photo-1627458805084-949391e56443?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Minimalist beauty bottle on stone",
+        "position": "Product Feature"
+      }
+    ]
+  },
+  "required_libraries": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge",
+    "lucide-react",
+    "react-day-picker",
+    "sonner",
+    "@radix-ui/react-dialog",
+    "@radix-ui/react-slot"
+  ],
+  "universal_guidelines": [
+    "Use 'framer-motion' for all entrance animations (staggerChildren).",
+    "Buttons must have 'pill' shape (rounded-full) for organic feel.",
+    "Do not use generic shadows; use 1px borders with low opacity.",
+    "Ensure 80vh max height for images on mobile.",
+    "Use 'sonner' for all toast notifications.",
+    "Dark mode is NOT priority; optimize for Light/Cream mode.",
+    "Never use 'Inter' for headings. Use Playfair Display.",
+    "Test all interactive elements with data-testid."
+  ]
+}
