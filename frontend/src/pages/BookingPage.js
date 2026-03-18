@@ -210,7 +210,7 @@ const BookingPage = () => {
                 <option value="">Choose a service</option>
                 {services.map((service) => (
                   <option key={service.service_id} value={service.service_id}>
-                    {service.name} - R{service.price.toFixed(0)} ({service.duration}min)
+                    {`${service.name} - R${service.price.toFixed(0)} (${service.duration}min)`}
                   </option>
                 ))}
               </select>
