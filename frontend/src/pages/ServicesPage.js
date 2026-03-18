@@ -50,7 +50,7 @@ const ServicesPage = () => {
           >
             <h1 className="font-serif text-5xl md:text-6xl tracking-tight text-[#1C1917] mb-4">
               Our{' '}
-              <span className="italic text-[#D4AF37]">Services</span>
+              <span className="italic text-[#E91E63]">Services</span>
             </h1>
             <p className="text-lg text-[#78716C] max-w-2xl mx-auto">
               Professional beauty services for all your special occasions
@@ -66,7 +66,7 @@ const ServicesPage = () => {
                 className={`px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all ${
                   selectedCategory === category
                     ? 'bg-[#1C1917] text-[#FDFCF8]'
-                    : 'bg-white border border-[#E7E5E4] text-[#1C1917] hover:border-[#D4AF37]'
+                    : 'bg-white border border-[#E7E5E4] text-[#1C1917] hover:border-[#E91E63]'
                 }`}
               >
                 {category}

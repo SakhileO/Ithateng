@@ -17,7 +17,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="footer-instagram-link"
-                className="w-10 h-10 rounded-full bg-[#D4AF37] flex items-center justify-center text-[#1C1917] hover:scale-110 transition-transform"
+                className="w-10 h-10 rounded-full bg-[#E91E63] flex items-center justify-center text-[#1C1917] hover:scale-110 transition-transform"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
@@ -29,22 +29,22 @@ const Footer = () => {
             <h4 className="font-serif text-lg mb-6 tracking-tight">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link to="/services" data-testid="footer-link-services" className="text-[#F2F0E9] hover:text-[#D4AF37] transition-colors">
+                <Link to="/services" data-testid="footer-link-services" className="text-[#F2F0E9] hover:text-[#E91E63] transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/booking" data-testid="footer-link-booking" className="text-[#F2F0E9] hover:text-[#D4AF37] transition-colors">
+                <Link to="/booking" data-testid="footer-link-booking" className="text-[#F2F0E9] hover:text-[#E91E63] transition-colors">
                   Book Now
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" data-testid="footer-link-gallery" className="text-[#F2F0E9] hover:text-[#D4AF37] transition-colors">
+                <Link to="/gallery" data-testid="footer-link-gallery" className="text-[#F2F0E9] hover:text-[#E91E63] transition-colors">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link to="/contact" data-testid="footer-link-contact" className="text-[#F2F0E9] hover:text-[#D4AF37] transition-colors">
+                <Link to="/contact" data-testid="footer-link-contact" className="text-[#F2F0E9] hover:text-[#E91E63] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -55,15 +55,15 @@ const Footer = () => {
             <h4 className="font-serif text-lg mb-6 tracking-tight">Business Hours</h4>
             <div className="space-y-3 text-sm text-[#F2F0E9]">
               <div className="flex items-center gap-2">
-                <Clock size={16} className="text-[#D4AF37]" />
+                <Clock size={16} className="text-[#E91E63]" />
                 <span>Mon - Fri: 9:00 AM - 5:00 PM</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock size={16} className="text-[#D4AF37]" />
+                <Clock size={16} className="text-[#E91E63]" />
                 <span>Saturday: 9:00 AM - 3:00 PM</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock size={16} className="text-[#D4AF37]" />
+                <Clock size={16} className="text-[#E91E63]" />
                 <span>Sunday: Closed</span>
               </div>
             </div>
@@ -73,13 +73,13 @@ const Footer = () => {
             <h4 className="font-serif text-lg mb-6 tracking-tight">Contact</h4>
             <div className="space-y-3 text-sm text-[#F2F0E9]">
               <div className="flex items-center gap-2">
-                <Phone size={16} className="text-[#D4AF37]" />
-                <a href="tel:0659839403" className="hover:text-[#D4AF37] transition-colors">
+                <Phone size={16} className="text-[#E91E63]" />
+                <a href="tel:0659839403" className="hover:text-[#E91E63] transition-colors">
                   065 983 9403
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail size={16} className="text-[#D4AF37]" />
+                <Mail size={16} className="text-[#E91E63]" />
                 <span>Instagram DM</span>
               </div>
             </div>

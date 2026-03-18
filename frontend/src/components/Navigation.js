@@ -46,8 +46,8 @@ const Navigation = () => {
                 data-testid={`nav-link-${link.label.toLowerCase().replace(' ', '-')}`}
                 className={`text-sm tracking-widest uppercase transition-colors ${
                   location.pathname === link.path
-                    ? 'text-[#D4AF37] font-medium'
-                    : 'text-[#1C1917] hover:text-[#D4AF37]'
+                    ? 'text-[#E91E63] font-medium'
+                    : 'text-[#1C1917] hover:text-[#E91E63]'
                 }`}
               >
                 {link.label}
@@ -85,7 +85,7 @@ const Navigation = () => {
                   data-testid={`mobile-nav-link-${link.label.toLowerCase().replace(' ', '-')}`}
                   className={`block text-lg tracking-wide ${
                     location.pathname === link.path
-                      ? 'text-[#D4AF37] font-medium'
+                      ? 'text-[#E91E63] font-medium'
                       : 'text-[#1C1917]'
                   }`}
                 >

@@ -58,9 +58,9 @@ const WhatsAppButton = () => {
               <a
                 href="tel:0659839403"
                 data-testid="phone-chat-link"
-                className="flex items-center gap-3 p-3 rounded-xl bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-xl bg-[#E91E63]/10 hover:bg-[#E91E63]/20 transition-colors group"
               >
-                <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#E91E63] rounded-full flex items-center justify-center">
                   <Phone size={20} className="text-white" />
                 </div>
                 <div>

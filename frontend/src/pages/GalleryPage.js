@@ -105,7 +105,7 @@ const GalleryPage = () => {
           >
             <h1 className="font-serif text-5xl md:text-6xl tracking-tight text-[#1C1917] mb-4">
               Our{' '}
-              <span className="italic text-[#D4AF37]">Gallery</span>
+              <span className="italic text-[#E91E63]">Gallery</span>
             </h1>
             <p className="text-lg text-[#78716C] max-w-2xl mx-auto mb-6">
               Explore our latest work and get inspired for your next look
@@ -115,7 +115,7 @@ const GalleryPage = () => {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="gallery-instagram-link"
-              className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#1C1917] transition-colors"
+              className="inline-flex items-center gap-2 text-[#E91E63] hover:text-[#1C1917] transition-colors"
             >
               <Instagram size={20} />
               <span className="tracking-wide">Follow us on Instagram</span>
@@ -131,7 +131,7 @@ const GalleryPage = () => {
             className="mb-20"
           >
             <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-[#1C1917] mb-8 text-center">
-              Watch Our <span className="italic text-[#D4AF37]">Work</span>
+              Watch Our <span className="italic text-[#E91E63]">Work</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -166,14 +166,14 @@ const GalleryPage = () => {
                       
                       {/* Play Button */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-[#D4AF37] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                        <div className="w-16 h-16 bg-[#E91E63] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                           <Play size={28} className="text-white ml-1" fill="white" />
                         </div>
                       </div>
                       
                       {/* Video Info */}
                       <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-xs text-[#D4AF37] font-medium tracking-wider uppercase">
+                        <span className="text-xs text-[#E91E63] font-medium tracking-wider uppercase">
                           {video.category}
                         </span>
                         <h3 className="text-white font-serif text-lg mt-1">{video.title}</h3>
@@ -193,17 +193,17 @@ const GalleryPage = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-[#1C1917] mb-8 text-center">
-              Photo <span className="italic text-[#D4AF37]">Gallery</span>
+              Photo <span className="italic text-[#E91E63]">Gallery</span>
             </h2>
 
             {loading ? (
               <div className="flex justify-center items-center py-20">
-                <Loader2 className="animate-spin text-[#D4AF37]" size={32} />
+                <Loader2 className="animate-spin text-[#E91E63]" size={32} />
               </div>
             ) : (
               <>
                 {source === 'none' && (
-                  <div className="bg-[#E6D2C9]/20 border border-[#D4AF37]/30 rounded-lg p-4 mb-8 text-center">
+                  <div className="bg-[#E6D2C9]/20 border border-[#E91E63]/30 rounded-lg p-4 mb-8 text-center">
                     <p className="text-sm text-[#78716C]">
                       Showing placeholder gallery. Connect Instagram API for live feed.
                     </p>
@@ -263,7 +263,7 @@ const GalleryPage = () => {
             <a
               href="/booking"
               data-testid="gallery-cta-button"
-              className="inline-block bg-[#D4AF37] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
+              className="inline-block bg-[#E91E63] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
             >
               Book Now
             </a>

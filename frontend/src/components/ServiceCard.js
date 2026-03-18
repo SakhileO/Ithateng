@@ -22,7 +22,7 @@ const ServiceCard = ({ service, onBook }) => {
       <h3 className="font-serif text-xl mb-2 tracking-tight text-[#1C1917]">{service.name}</h3>
       <p className="text-sm text-[#78716C] mb-4 leading-relaxed">{service.description}</p>
       <div className="flex items-center justify-between mb-6">
-        <span className="text-2xl font-medium text-[#D4AF37]">R{service.price.toFixed(0)}</span>
+        <span className="text-2xl font-medium text-[#E91E63]">R{service.price.toFixed(0)}</span>
         <span className="text-sm text-[#78716C]">{service.duration} min</span>
       </div>
       {onBook && (

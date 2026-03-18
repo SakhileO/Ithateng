@@ -54,13 +54,13 @@ const HomePage = () => {
               className="lg:col-span-6 space-y-8"
             >
               <div className="inline-flex items-center gap-2 bg-[#E6D2C9]/30 rounded-full px-6 py-3">
-                <Star size={16} className="text-[#D4AF37] fill-[#D4AF37]" />
+                <Star size={16} className="text-[#E91E63] fill-[#E91E63]" />
                 <span className="text-sm tracking-wide text-[#1C1917]">5.0 Rating • 15 Reviews</span>
               </div>
 
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] text-[#1C1917]">
                 Your Beauty,{' '}
-                <span className="italic text-[#D4AF37]">Our Passion</span>
+                <span className="italic text-[#E91E63]">Our Passion</span>
               </h1>
 
               <p className="text-lg text-[#78716C] leading-relaxed max-w-xl">
@@ -93,7 +93,7 @@ const HomePage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="hero-instagram-link"
-                  className="flex items-center gap-2 text-sm text-[#78716C] hover:text-[#D4AF37] transition-colors"
+                  className="flex items-center gap-2 text-sm text-[#78716C] hover:text-[#E91E63] transition-colors"
                 >
                   <Instagram size={20} />
                   <span className="tracking-wide">@ithatengbyale</span>
@@ -209,7 +209,7 @@ const HomePage = () => {
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={16} className="text-[#D4AF37] fill-[#D4AF37]" />
+                    <Star key={i} size={16} className="text-[#E91E63] fill-[#E91E63]" />
                   ))}
                 </div>
                 <p className="text-[#78716C] italic mb-4 font-serif leading-relaxed">
@@ -239,7 +239,7 @@ const HomePage = () => {
             <button
               onClick={() => navigate('/booking')}
               data-testid="cta-book-now-button"
-              className="bg-[#D4AF37] text-white rounded-full px-8 py-6 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 active:scale-95"
+              className="bg-[#E91E63] text-white rounded-full px-8 py-6 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 active:scale-95"
             >
               Book Your Appointment
             </button>

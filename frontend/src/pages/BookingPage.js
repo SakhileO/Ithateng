@@ -137,7 +137,7 @@ const BookingPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl w-full mx-6 bg-white border border-[#E7E5E4]/40 p-12 rounded-xl text-center"
         >
-          <CheckCircle2 size={64} className="text-[#D4AF37] mx-auto mb-6" />
+          <CheckCircle2 size={64} className="text-[#E91E63] mx-auto mb-6" />
           <h2 className="font-serif text-4xl tracking-tight text-[#1C1917] mb-4">
             Booking Confirmed!
           </h2>
@@ -160,7 +160,7 @@ const BookingPage = () => {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center bg-[#FDFCF8]">
         <div className="text-center">
-          <Loader2 className="animate-spin text-[#D4AF37] mx-auto mb-4" size={48} />
+          <Loader2 className="animate-spin text-[#E91E63] mx-auto mb-4" size={48} />
           <p className="text-[#78716C]">Verifying payment...</p>
         </div>
       </div>
@@ -179,7 +179,7 @@ const BookingPage = () => {
           >
             <h1 className="font-serif text-5xl md:text-6xl tracking-tight text-[#1C1917] mb-4">
               Book Your{' '}
-              <span className="italic text-[#D4AF37]">Appointment</span>
+              <span className="italic text-[#E91E63]">Appointment</span>
             </h1>
             <p className="text-lg text-[#78716C]">
               R100 deposit required to confirm booking

@@ -14,7 +14,7 @@ const AboutPage = () => {
             >
               <h1 className="font-serif text-5xl md:text-6xl tracking-tight text-[#1C1917] mb-8">
                 About{' '}
-                <span className="italic text-[#D4AF37]">Ithateng By Ale</span>
+                <span className="italic text-[#E91E63]">Ithateng By Ale</span>
               </h1>
               <p className="text-lg text-[#78716C] leading-relaxed mb-6">
                 Ithateng By Ale is more than just a beauty service provider—it's a celebration of confidence, 
@@ -39,9 +39,9 @@ const AboutPage = () => {
             >
               <div className="aspect-[4/5] rounded-lg overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1601288717546-f26deef256d7?crop=entropy&cs=srgb&fm=jpg&q=85"
+                  src="https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/bmvzkc1l_about.jpeg"
                   alt="About Ithateng By Ale"
-                  className="w-full h-full object-cover grayscale-[20%]"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>
@@ -91,7 +91,7 @@ const AboutPage = () => {
                 className="bg-white border border-[#E7E5E4]/40 p-8 rounded-xl text-center"
               >
                 <div className="w-16 h-16 bg-[#E6D2C9]/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon size={28} className="text-[#D4AF37]" />
+                  <value.icon size={28} className="text-[#E91E63]" />
                 </div>
                 <h3 className="font-serif text-2xl mb-4 tracking-tight text-[#1C1917]">
                   {value.title}

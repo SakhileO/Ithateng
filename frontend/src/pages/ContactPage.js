@@ -47,7 +47,7 @@ const ContactPage = () => {
           >
             <h1 className="font-serif text-5xl md:text-6xl tracking-tight text-[#1C1917] mb-4">
               Get In{' '}
-              <span className="italic text-[#D4AF37]">Touch</span>
+              <span className="italic text-[#E91E63]">Touch</span>
             </h1>
             <p className="text-lg text-[#78716C] max-w-2xl mx-auto">
               Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
@@ -67,11 +67,11 @@ const ContactPage = () => {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#E6D2C9]/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone size={20} className="text-[#D4AF37]" />
+                    <Phone size={20} className="text-[#E91E63]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#1C1917] mb-1">Phone</h3>
-                    <a href="tel:0659839403" className="text-[#78716C] hover:text-[#D4AF37] transition-colors">
+                    <a href="tel:0659839403" className="text-[#78716C] hover:text-[#E91E63] transition-colors">
                       065 983 9403
                     </a>
                   </div>
@@ -79,7 +79,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#E6D2C9]/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Instagram size={20} className="text-[#D4AF37]" />
+                    <Instagram size={20} className="text-[#E91E63]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#1C1917] mb-1">Instagram</h3>
@@ -87,7 +87,7 @@ const ContactPage = () => {
                       href="https://instagram.com/ithatengbyale"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#78716C] hover:text-[#D4AF37] transition-colors"
+                      className="text-[#78716C] hover:text-[#E91E63] transition-colors"
                     >
                       @ithatengbyale
                     </a>
@@ -96,7 +96,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#E6D2C9]/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail size={20} className="text-[#D4AF37]" />
+                    <Mail size={20} className="text-[#E91E63]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#1C1917] mb-1">Booking</h3>
