@@ -109,8 +109,8 @@ const HomePage = () => {
             >
               <div className="relative aspect-[3/4] md:aspect-[4/5] rounded-lg overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1560869683-f5d8bf564346?crop=entropy&cs=srgb&fm=jpg&q=85"
-                  alt="Elegant beauty services"
+                  src="https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/mmr1dd7a_head.jpeg"
+                  alt="Ithateng By Ale - Beauty Services"
                   className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/20 to-transparent" />
