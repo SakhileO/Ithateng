@@ -310,6 +310,161 @@ async def subscribe_newsletter(subscription: NewsletterSubscribe):
     await db.newsletter_subscribers.insert_one(doc)
     return {"message": "Subscribed successfully"}
 
+# ===== AUTH MODELS =====
+
+class UserRegister(BaseModel):
+    name: str
+    email: EmailStr
+    phone: str
+    password: str
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+class ForgotPassword(BaseModel):
+    email: EmailStr
+
+class UserProfile(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    user_id: str
+    name: str
+    email: str
+    phone: str
+    role: str = "user"
+    created_at: str
+
+class ProfileUpdate(BaseModel):
+    name: Optional[str] = None
+    phone: Optional[str] = None
+
+# ===== AUTH ENDPOINTS =====
+
+import hashlib
+
+def hash_password(password: str) -> str:
+    return hashlib.sha256(password.encode()).hexdigest()
+
+@api_router.post("/auth/register")
+async def register_user(user: UserRegister):
+    # Check if email exists
+    existing = await db.users.find_one({"email": user.email})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Create user
+    user_doc = {
+        "user_id": str(uuid.uuid4()),
+        "name": user.name,
+        "email": user.email,
+        "phone": user.phone,
+        "password": hash_password(user.password),
+        "role": "user",
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.users.insert_one(user_doc)
+    
+    return {
+        "message": "Registration successful",
+        "user": {
+            "user_id": user_doc["user_id"],
+            "name": user_doc["name"],
+            "email": user_doc["email"],
+            "phone": user_doc["phone"],
+            "role": user_doc["role"]
+        }
+    }
+
+@api_router.post("/auth/login")
+async def login_user(credentials: UserLogin):
+    # Check for admin login
+    ADMIN_EMAIL = "admin@ithatengbyale.com"
+    ADMIN_PASSWORD = "ithateng2024"
+    
+    if credentials.email == ADMIN_EMAIL and credentials.password == ADMIN_PASSWORD:
+        return {
+            "message": "Login successful",
+            "user": {
+                "user_id": "admin",
+                "name": "Admin",
+                "email": ADMIN_EMAIL,
+                "phone": "",
+                "role": "admin"
+            }
+        }
+    
+    # Find user
+    user = await db.users.find_one({"email": credentials.email})
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    # Check password
+    if user["password"] != hash_password(credentials.password):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    return {
+        "message": "Login successful",
+        "user": {
+            "user_id": user["user_id"],
+            "name": user["name"],
+            "email": user["email"],
+            "phone": user["phone"],
+            "role": user.get("role", "user")
+        }
+    }
+
+@api_router.post("/auth/forgot-password")
+async def forgot_password(data: ForgotPassword):
+    user = await db.users.find_one({"email": data.email})
+    if not user:
+        # Don't reveal if email exists
+        return {"message": "If this email exists, you will receive a password reset link"}
+    
+    # Generate reset token
+    reset_token = str(uuid.uuid4())
+    await db.password_resets.insert_one({
+        "email": data.email,
+        "token": reset_token,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "used": False
+    })
+    
+    # In production, send email with reset link
+    # For now, just return success message
+    return {"message": "If this email exists, you will receive a password reset link"}
+
+@api_router.get("/auth/profile/{user_id}")
+async def get_profile(user_id: str):
+    if user_id == "admin":
+        return {
+            "user_id": "admin",
+            "name": "Admin",
+            "email": "admin@ithatengbyale.com",
+            "phone": "",
+            "role": "admin",
+            "created_at": ""
+        }
+    
+    user = await db.users.find_one({"user_id": user_id}, {"_id": 0, "password": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+@api_router.put("/auth/profile/{user_id}")
+async def update_profile(user_id: str, profile: ProfileUpdate):
+    update_data = {k: v for k, v in profile.model_dump().items() if v is not None}
+    if update_data:
+        await db.users.update_one({"user_id": user_id}, {"$set": update_data})
+    
+    user = await db.users.find_one({"user_id": user_id}, {"_id": 0, "password": 0})
+    return user
+
+@api_router.get("/auth/user-bookings/{user_id}")
+async def get_user_bookings(user_id: str):
+    bookings = await db.bookings.find({"user_id": user_id}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    return bookings
+
 # ===== ADMIN ENDPOINTS =====
 
 class ProductCreate(BaseModel):

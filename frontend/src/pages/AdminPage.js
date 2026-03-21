@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Lock, 
@@ -9,18 +10,18 @@ import {
   Trash2, 
   Plus,
   X,
-  LogOut,
-  Edit
+  LogOut
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { useAuth } from '../context/AuthContext';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const AdminPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { user, isAdmin, isAuthenticated, logout } = useAuth();
   const [activeTab, setActiveTab] = useState('products');
   const [products, setProducts] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -37,17 +38,12 @@ const AdminPage = () => {
   });
 
   useEffect(() => {
-    const saved = sessionStorage.getItem('adminAuth');
-    if (saved === 'true') {
-      setIsAuthenticated(true);
+    // Check if user is admin
+    if (!isAuthenticated() || !isAdmin()) {
+      return;
     }
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchData();
-    }
-  }, [isAuthenticated, activeTab]);
+    fetchData();
+  }, [activeTab, user]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -72,24 +68,10 @@ const AdminPage = () => {
     }
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(`${API}/admin/login?password=${password}`);
-      if (res.data.success) {
-        setIsAuthenticated(true);
-        sessionStorage.setItem('adminAuth', 'true');
-        toast.success('Welcome to Admin Dashboard');
-      }
-    } catch (error) {
-      toast.error('Invalid password');
-    }
-  };
-
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    sessionStorage.removeItem('adminAuth');
+    logout();
     toast.success('Logged out successfully');
+    navigate('/');
   };
 
   const handleAddProduct = async (e) => {
@@ -130,39 +112,52 @@ const AdminPage = () => {
     }
   };
 
-  if (!isAuthenticated) {
+  // Show login required if not authenticated
+  if (!isAuthenticated()) {
     return (
-      <div data-testid="admin-login" className="min-h-screen pt-20 bg-[#FDFCF8] flex items-center justify-center">
+      <div data-testid="admin-login-required" className="min-h-screen pt-20 bg-[#FDFCF8] flex items-center justify-center px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-[#E7E5E4]/40 p-8 rounded-xl w-full max-w-md"
+          className="bg-white border border-[#E7E5E4]/40 p-8 md:p-12 rounded-xl w-full max-w-md text-center"
         >
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-[#E91E63]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock size={32} className="text-[#E91E63]" />
-            </div>
-            <h1 className="font-serif text-3xl tracking-tight text-[#1C1917]">Admin Login</h1>
-            <p className="text-[#78716C] mt-2">Enter password to access dashboard</p>
+          <div className="w-16 h-16 bg-[#E91E63]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Lock size={32} className="text-[#E91E63]" />
           </div>
-          
-          <form onSubmit={handleLogin}>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter admin password"
-              data-testid="admin-password-input"
-              className="w-full bg-transparent border border-[#E7E5E4] px-4 py-4 rounded-lg focus:outline-none focus:border-[#E91E63] mb-4"
-            />
-            <button
-              type="submit"
-              data-testid="admin-login-button"
-              className="w-full bg-[#1C1917] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
-            >
-              Login
-            </button>
-          </form>
+          <h1 className="font-serif text-3xl tracking-tight text-[#1C1917] mb-2">Admin Access</h1>
+          <p className="text-[#78716C] mb-6">Please login with admin credentials</p>
+          <Link
+            to="/login"
+            state={{ from: '/admin' }}
+            className="inline-block bg-[#1C1917] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
+          >
+            Login
+          </Link>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Show access denied if not admin
+  if (!isAdmin()) {
+    return (
+      <div data-testid="admin-access-denied" className="min-h-screen pt-20 bg-[#FDFCF8] flex items-center justify-center px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white border border-[#E7E5E4]/40 p-8 md:p-12 rounded-xl w-full max-w-md text-center"
+        >
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Lock size={32} className="text-red-500" />
+          </div>
+          <h1 className="font-serif text-3xl tracking-tight text-[#1C1917] mb-2">Access Denied</h1>
+          <p className="text-[#78716C] mb-6">You don't have permission to access this page</p>
+          <Link
+            to="/"
+            className="inline-block bg-[#1C1917] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
+          >
+            Go Home
+          </Link>
         </motion.div>
       </div>
     );

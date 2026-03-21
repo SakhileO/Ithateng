@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar as CalendarIcon, Clock, Loader2, CheckCircle2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, Loader2, CheckCircle2, Lock } from 'lucide-react';
 import axios from 'axios';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { toast } from 'sonner';
+import { useAuth } from '../context/AuthContext';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -15,6 +16,7 @@ const BookingPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('session_id');
+  const { user, isAuthenticated } = useAuth();
 
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState(location.state?.selectedService || null);
@@ -36,7 +38,15 @@ const BookingPage = () => {
     if (sessionId) {
       pollPaymentStatus(sessionId);
     }
-  }, [sessionId]);
+    // Pre-fill form with user data if logged in
+    if (user) {
+      setFormData({
+        user_name: user.name || '',
+        user_email: user.email || '',
+        user_phone: user.phone || '',
+      });
+    }
+  }, [sessionId, user]);
 
   useEffect(() => {
     if (selectedDate) {
@@ -163,6 +173,47 @@ const BookingPage = () => {
           <Loader2 className="animate-spin text-[#E91E63] mx-auto mb-4" size={48} />
           <p className="text-[#78716C]">Verifying payment...</p>
         </div>
+      </div>
+    );
+  }
+
+  // Check if user is logged in
+  if (!isAuthenticated()) {
+    return (
+      <div data-testid="booking-login-required" className="min-h-screen pt-20 flex items-center justify-center bg-[#FDFCF8] px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white border border-[#E7E5E4]/40 p-8 md:p-12 rounded-xl w-full max-w-md text-center"
+        >
+          <div className="w-20 h-20 bg-[#E91E63]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Lock size={36} className="text-[#E91E63]" />
+          </div>
+          <h2 className="font-serif text-3xl tracking-tight text-[#1C1917] mb-4">
+            Login Required
+          </h2>
+          <p className="text-[#78716C] mb-8">
+            Please log in or create an account to book an appointment with us.
+          </p>
+          <div className="flex flex-col gap-3">
+            <Link
+              to="/login"
+              state={{ from: '/booking' }}
+              data-testid="booking-login-button"
+              className="bg-[#1C1917] text-white rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              data-testid="booking-signup-button"
+              className="border border-[#1C1917] text-[#1C1917] rounded-full px-8 py-4 text-sm font-medium tracking-widest uppercase transition-all hover:bg-[#F2F0E9]"
+            >
+              Create Account
+            </Link>
+          </div>
+        </motion.div>
       </div>
     );
   }
