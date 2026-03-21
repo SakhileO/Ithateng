@@ -10,6 +10,7 @@ import BookingPage from './pages/BookingPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/ShopPage';
+import AdminPage from './pages/AdminPage';
 import './App.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/booking/confirmation" element={<BookingPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         <Footer />
         <WhatsAppButton />

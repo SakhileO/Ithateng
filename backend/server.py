@@ -310,6 +310,75 @@ async def subscribe_newsletter(subscription: NewsletterSubscribe):
     await db.newsletter_subscribers.insert_one(doc)
     return {"message": "Subscribed successfully"}
 
+# ===== ADMIN ENDPOINTS =====
+
+class ProductCreate(BaseModel):
+    name: str
+    description: str
+    price: float
+    image_url: str
+    category: str
+
+class ProductUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    price: Optional[float] = None
+    image_url: Optional[str] = None
+    category: Optional[str] = None
+
+ADMIN_PASSWORD = "ithateng2024"
+
+@api_router.post("/admin/login")
+async def admin_login(password: str):
+    if password == ADMIN_PASSWORD:
+        return {"success": True, "message": "Login successful"}
+    raise HTTPException(status_code=401, detail="Invalid password")
+
+@api_router.get("/admin/products")
+async def get_admin_products():
+    products = await db.products.find({}, {"_id": 0}).to_list(1000)
+    return products
+
+@api_router.post("/admin/products")
+async def create_product(product: ProductCreate):
+    doc = product.model_dump()
+    doc['id'] = str(uuid.uuid4())
+    doc['created_at'] = datetime.now(timezone.utc).isoformat()
+    await db.products.insert_one(doc)
+    return {"message": "Product created", "id": doc['id']}
+
+@api_router.put("/admin/products/{product_id}")
+async def update_product(product_id: str, product: ProductUpdate):
+    update_data = {k: v for k, v in product.model_dump().items() if v is not None}
+    if update_data:
+        await db.products.update_one({"id": product_id}, {"$set": update_data})
+    return {"message": "Product updated"}
+
+@api_router.delete("/admin/products/{product_id}")
+async def delete_product(product_id: str):
+    await db.products.delete_one({"id": product_id})
+    return {"message": "Product deleted"}
+
+@api_router.get("/admin/contacts")
+async def get_contact_messages():
+    messages = await db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return messages
+
+@api_router.delete("/admin/contacts/{contact_id}")
+async def delete_contact(contact_id: str):
+    await db.contact_messages.delete_one({"id": contact_id})
+    return {"message": "Message deleted"}
+
+@api_router.get("/admin/bookings")
+async def get_all_bookings():
+    bookings = await db.bookings.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return bookings
+
+@api_router.get("/admin/newsletter")
+async def get_newsletter_subscribers():
+    subscribers = await db.newsletter_subscribers.find({}, {"_id": 0}).to_list(1000)
+    return subscribers
+
 # ===== SEED DATA =====
 
 @api_router.post("/seed-services")
