@@ -27,8 +27,8 @@ const GalleryPage = () => {
     }
   };
 
-  // Your actual photography images
-  const photographyImages = [
+  // Your actual photography and polaroid images
+  const galleryImages = [
     {
       id: 'photo-1',
       media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/6t7u3fh1_g10.jpeg',
@@ -59,46 +59,51 @@ const GalleryPage = () => {
       caption: 'Instant Photos',
       permalink: 'https://instagram.com/ithatengbyale'
     },
+    {
+      id: 'photo-6',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/bc9y2epy_phuma.png',
+      caption: 'Phuma Tuesday Event',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-7',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/3ynv9p1z_DKNY%20Lounge.png',
+      caption: 'DKNY Lounge',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-8',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/x3n6slyp_gallery_2.png',
+      caption: 'Friends Polaroid',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-9',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/yno2x16v_gallery_8.png',
+      caption: 'Phone Cases with Polaroids',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-10',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/5jx2v4gq_gallery_9.png',
+      caption: 'Event Photography',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-11',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/lo6fpv6a_Single%20Polaroid.png',
+      caption: 'Single Polaroid',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'photo-12',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/27pdy9sv_Polaroid%20Bundle.png',
+      caption: 'Polaroid Bundle',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
   ];
 
-  // Nail images for gallery
-  const nailImages = [
-    {
-      id: 'nail-1',
-      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/o0mz3m4e_nail_1.png',
-      caption: 'Nail Art',
-      permalink: 'https://instagram.com/ithatengbyale'
-    },
-    {
-      id: 'nail-2',
-      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/b09vt5oo_nail_2.png',
-      caption: 'French Tips',
-      permalink: 'https://instagram.com/ithatengbyale'
-    },
-    {
-      id: 'nail-3',
-      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/rabcff4u_nail_3.png',
-      caption: 'Nail Design',
-      permalink: 'https://instagram.com/ithatengbyale'
-    },
-    {
-      id: 'nail-4',
-      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/txlezt8p_nail_4.png',
-      caption: 'Gel Nails',
-      permalink: 'https://instagram.com/ithatengbyale'
-    },
-    {
-      id: 'nail-5',
-      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/cxrcq4tb_nail_5.png',
-      caption: 'Acrylic Nails',
-      permalink: 'https://instagram.com/ithatengbyale'
-    },
-  ];
-
-  // Combine all gallery images
-  const allGalleryImages = [...photographyImages, ...nailImages];
-
-  const displayImages = instagramPosts.length > 0 ? instagramPosts : allGalleryImages;
+  const displayImages = instagramPosts.length > 0 ? instagramPosts : galleryImages;
 
   return (
     <div data-testid="gallery-page" className="min-h-screen pt-20">
@@ -116,7 +121,7 @@ const GalleryPage = () => {
               <span className="italic text-[#E91E63]">Gallery</span>
             </h1>
             <p className="text-lg text-[#78716C] max-w-2xl mx-auto mb-6">
-              Explore our latest work and get inspired for your next look
+              Explore our polaroid photography and capture your memories
             </p>
             <a
               href="https://instagram.com/ithatengbyale"
@@ -196,10 +201,10 @@ const GalleryPage = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-serif text-3xl md:text-4xl tracking-tight mb-4">
-              Want to Look This Good?
+              Want Your Own Polaroid Memories?
             </h2>
             <p className="text-[#F2F0E9] mb-8">
-              Book your appointment today and let us transform your look
+              Book your polaroid photography session for events, parties, and special occasions
             </p>
             <a
               href="/booking"
