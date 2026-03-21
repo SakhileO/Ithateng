@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Loader2, Play } from 'lucide-react';
+import { Instagram, Loader2 } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -10,7 +10,6 @@ const GalleryPage = () => {
   const [instagramPosts, setInstagramPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [source, setSource] = useState('');
-  const [activeVideo, setActiveVideo] = useState(null);
 
   useEffect(() => {
     fetchInstagramFeed();
@@ -28,69 +27,78 @@ const GalleryPage = () => {
     }
   };
 
-  const placeholderImages = [
-    'https://images.unsplash.com/photo-1672815554809-37e355eddd24?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1645735123314-d11fcfdd0000?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1695556746240-55d9f92faf43?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1747823490861-1fa6d0132fee?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1560869683-f5d8bf564346?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1765852549115-2ee9f55a1980?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1601288717546-f26deef256d7?crop=entropy&cs=srgb&fm=jpg&q=85',
-    'https://images.unsplash.com/photo-1627458805084-949391e56443?crop=entropy&cs=srgb&fm=jpg&q=85',
-  ];
-
-  // Video showcase data - beauty/makeup tutorial style videos from Pexels
-  const showcaseVideos = [
+  // Your actual photography images
+  const photographyImages = [
     {
-      id: 'video-1',
-      title: 'Nail Art Tutorial',
-      thumbnail: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Nails'
+      id: 'photo-1',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/6t7u3fh1_g10.jpeg',
+      caption: 'Polaroid Photography by Ithateng By Ale',
+      permalink: 'https://instagram.com/ithatengbyale'
     },
     {
-      id: 'video-2',
-      title: 'Lash Extension Process',
-      thumbnail: 'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Lashes'
+      id: 'photo-2',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/fxkdtbet_g8.jpeg',
+      caption: 'Professional Photoshoot',
+      permalink: 'https://instagram.com/ithatengbyale'
     },
     {
-      id: 'video-3',
-      title: 'Wig Installation',
-      thumbnail: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Wigs'
+      id: 'photo-3',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/t2yqylnx_g7.jpeg',
+      caption: 'Polaroid Memories',
+      permalink: 'https://instagram.com/ithatengbyale'
     },
     {
-      id: 'video-4',
-      title: 'Glam Makeup Look',
-      thumbnail: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Makeup'
+      id: 'photo-4',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/wlbvz1nd_g3.jpeg',
+      caption: 'Creative Photography',
+      permalink: 'https://instagram.com/ithatengbyale'
     },
     {
-      id: 'video-5',
-      title: 'French Tip Manicure',
-      thumbnail: 'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Nails'
-    },
-    {
-      id: 'video-6',
-      title: 'Bridal Makeup Tutorial',
-      thumbnail: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?crop=entropy&cs=srgb&fm=jpg&q=85&w=400',
-      videoUrl: 'https://player.vimeo.com/video/824804225?h=0&autoplay=1&muted=1',
-      category: 'Makeup'
+      id: 'photo-5',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/s3bw4ozs_g1.jpeg',
+      caption: 'Instant Photos',
+      permalink: 'https://instagram.com/ithatengbyale'
     },
   ];
 
-  const displayImages = instagramPosts.length > 0 ? instagramPosts : placeholderImages.map((url, i) => ({
-    id: `placeholder-${i}`,
-    media_url: url,
-    caption: 'Beautiful work by Ithateng By Ale',
-    permalink: 'https://instagram.com/ithatengbyale'
-  }));
+  // Nail images for gallery
+  const nailImages = [
+    {
+      id: 'nail-1',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/o0mz3m4e_nail_1.png',
+      caption: 'Nail Art',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'nail-2',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/b09vt5oo_nail_2.png',
+      caption: 'French Tips',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'nail-3',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/rabcff4u_nail_3.png',
+      caption: 'Nail Design',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'nail-4',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/txlezt8p_nail_4.png',
+      caption: 'Gel Nails',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+    {
+      id: 'nail-5',
+      media_url: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/cxrcq4tb_nail_5.png',
+      caption: 'Acrylic Nails',
+      permalink: 'https://instagram.com/ithatengbyale'
+    },
+  ];
+
+  // Combine all gallery images
+  const allGalleryImages = [...photographyImages, ...nailImages];
+
+  const displayImages = instagramPosts.length > 0 ? instagramPosts : allGalleryImages;
 
   return (
     <div data-testid="gallery-page" className="min-h-screen pt-20">
@@ -122,69 +130,6 @@ const GalleryPage = () => {
             </a>
           </motion.div>
 
-          {/* Video Showcase Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-20"
-          >
-            <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-[#1C1917] mb-8 text-center">
-              Watch Our <span className="italic text-[#E91E63]">Work</span>
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {showcaseVideos.map((video, index) => (
-                <motion.div
-                  key={video.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  data-testid={`video-item-${index}`}
-                  className="group relative aspect-[9/16] md:aspect-video rounded-xl overflow-hidden cursor-pointer bg-[#1C1917]"
-                  onClick={() => setActiveVideo(activeVideo === video.id ? null : video.id)}
-                >
-                  {activeVideo === video.id ? (
-                    <iframe
-                      src={video.videoUrl}
-                      className="w-full h-full"
-                      frameBorder="0"
-                      allow="autoplay; fullscreen; picture-in-picture"
-                      allowFullScreen
-                      title={video.title}
-                    />
-                  ) : (
-                    <>
-                      <img
-                        src={video.thumbnail}
-                        alt={video.title}
-                        className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
-                      
-                      {/* Play Button */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-[#E91E63] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                          <Play size={28} className="text-white ml-1" fill="white" />
-                        </div>
-                      </div>
-                      
-                      {/* Video Info */}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-xs text-[#E91E63] font-medium tracking-wider uppercase">
-                          {video.category}
-                        </span>
-                        <h3 className="text-white font-serif text-lg mt-1">{video.title}</h3>
-                      </div>
-                    </>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Photo Gallery Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,10 +137,6 @@ const GalleryPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-[#1C1917] mb-8 text-center">
-              Photo <span className="italic text-[#E91E63]">Gallery</span>
-            </h2>
-
             {loading ? (
               <div className="flex justify-center items-center py-20">
                 <Loader2 className="animate-spin text-[#E91E63]" size={32} />
@@ -205,7 +146,7 @@ const GalleryPage = () => {
                 {source === 'none' && (
                   <div className="bg-[#E6D2C9]/20 border border-[#E91E63]/30 rounded-lg p-4 mb-8 text-center">
                     <p className="text-sm text-[#78716C]">
-                      Showing placeholder gallery. Connect Instagram API for live feed.
+                      Showing our work gallery. Connect Instagram API for live feed.
                     </p>
                   </div>
                 )}
@@ -223,7 +164,7 @@ const GalleryPage = () => {
                       <img
                         src={post.media_url}
                         alt={post.caption || 'Gallery image'}
-                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {post.permalink && (

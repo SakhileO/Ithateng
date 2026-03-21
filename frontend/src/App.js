@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import BookingPage from './pages/BookingPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import ShopPage from './pages/ShopPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/shop" element={<ShopPage />} />
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/booking/confirmation" element={<BookingPage />} />
           <Route path="/gallery" element={<GalleryPage />} />

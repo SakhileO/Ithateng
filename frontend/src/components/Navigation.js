@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
@@ -20,7 +20,7 @@ const Navigation = () => {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
-    { path: '/booking', label: 'Book Now' },
+    { path: '/shop', label: 'Shop' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/contact', label: 'Contact' },
   ];
@@ -53,6 +53,14 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
+            <Link
+              to="/booking"
+              data-testid="nav-book-now-button"
+              className="bg-[#E91E63] text-white rounded-full px-6 py-3 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 flex items-center gap-2"
+            >
+              <Calendar size={16} />
+              Book Now
+            </Link>
           </div>
 
           <button
@@ -92,6 +100,17 @@ const Navigation = () => {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                to="/booking"
+                onClick={() => setIsOpen(false)}
+                data-testid="mobile-nav-book-now"
+                className="block bg-[#E91E63] text-white rounded-full px-6 py-3 text-center text-sm font-medium tracking-widest uppercase mt-4"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <Calendar size={16} />
+                  Book Now
+                </span>
+              </Link>
             </div>
           </motion.div>
         )}
