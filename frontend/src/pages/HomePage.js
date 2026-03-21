@@ -139,10 +139,10 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'Nails', icon: Sparkles, image: 'https://images.unsplash.com/photo-1672815554809-37e355eddd24?crop=entropy&cs=srgb&fm=jpg&q=85' },
+              { name: 'Nails', icon: Sparkles, image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/o0mz3m4e_nail_1.png' },
               { name: 'Lashes', icon: Sparkles, image: 'https://images.unsplash.com/photo-1645735123314-d11fcfdd0000?crop=entropy&cs=srgb&fm=jpg&q=85' },
-              { name: 'Wigs', icon: Sparkles, image: 'https://images.unsplash.com/photo-1695556746240-55d9f92faf43?crop=entropy&cs=srgb&fm=jpg&q=85' },
-              { name: 'Makeup', icon: Sparkles, image: 'https://images.unsplash.com/photo-1747823490861-1fa6d0132fee?crop=entropy&cs=srgb&fm=jpg&q=85' },
+              { name: 'Wigs', icon: Sparkles, image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/9okehty4_wig.jpeg' },
+              { name: 'Makeup', icon: Sparkles, image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/b37bdic1_makeup.jpeg' },
             ].map((service, index) => (
               <motion.div
                 key={service.name}

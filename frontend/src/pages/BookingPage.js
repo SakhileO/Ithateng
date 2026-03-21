@@ -320,21 +320,17 @@ const BookingPage = () => {
               </ul>
             </div>
 
-            <button
-              type="submit"
-              disabled={loading || !selectedService || !selectedDate || !selectedTime}
-              data-testid="proceed-to-payment-button"
-              className="w-full bg-[#1C1917] text-[#FDFCF8] rounded-full px-8 py-6 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            <a
+              href={`https://wa.me/27659839403?text=${encodeURIComponent(
+                `Hi! I'd like to book an appointment:\n\nService: ${selectedService?.name || 'Not selected'}\nDate: ${selectedDate ? selectedDate.toLocaleDateString() : 'Not selected'}\nTime: ${selectedTime || 'Not selected'}\n\nName: ${formData.user_name || ''}\nPhone: ${formData.user_phone || ''}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="whatsapp-booking-button"
+              className="w-full bg-[#25D366] text-white rounded-full px-8 py-6 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
             >
-              {loading ? (
-                <>
-                  <Loader2 className="animate-spin" size={18} />
-                  Processing...
-                </>
-              ) : (
-                'Proceed to Payment'
-              )}
-            </button>
+              Book via WhatsApp
+            </a>
           </motion.form>
         </div>
       </section>

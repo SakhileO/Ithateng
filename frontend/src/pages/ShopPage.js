@@ -1,36 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Package } from 'lucide-react';
-import axios from 'axios';
 import { toast } from 'sonner';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
 const ShopPage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      // Fetch products from services that are in "Products" category or Photography
-      const response = await axios.get(`${API}/services`);
-      // Filter for product-like services
-      const productServices = response.data.filter(s => 
-        s.category === 'Photography' || s.name.includes('Melting') || s.name.includes('Coaster')
-      );
-      setProducts(productServices);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   // Static products for the shop
   const shopProducts = [
     {
@@ -38,32 +11,24 @@ const ShopPage = () => {
       name: 'Melting Band',
       description: 'Professional quality melting band for flawless wig application',
       price: 30,
-      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/o0mz3m4e_nail_1.png',
+      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/4vk086ml_Melting%20Band.jpeg',
       category: 'Accessories'
     },
     {
       id: 'prod-2',
-      name: 'Coasters Set',
-      description: 'Beautiful decorative coasters - perfect gift',
+      name: 'Square Coaster',
+      description: 'Beautiful branded square coaster - perfect gift',
       price: 50,
-      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/txlezt8p_nail_4.png',
+      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/tx2f9ml1_Square%20Coaster.jpeg',
       category: 'Home Decor'
     },
     {
       id: 'prod-3',
-      name: 'Single Polaroid',
-      description: 'Capture your memories with instant polaroid photos',
-      price: 40,
-      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/lo6fpv6a_Single%20Polaroid.png',
-      category: 'Photography'
-    },
-    {
-      id: 'prod-4',
-      name: 'Polaroid Bundle (2+)',
-      description: 'R30 per photo when you order 2 or more',
-      price: 30,
-      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/27pdy9sv_Polaroid%20Bundle.png',
-      category: 'Photography'
+      name: 'Round Coaster',
+      description: 'Elegant branded round coaster - perfect gift',
+      price: 50,
+      image: 'https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/vztuefn4_Round%20Coaster.jpeg',
+      category: 'Home Decor'
     },
   ];
 
@@ -89,11 +54,11 @@ const ShopPage = () => {
               <span className="italic text-[#E91E63]">Shop</span>
             </h1>
             <p className="text-lg text-[#78716C] max-w-2xl mx-auto">
-              Shop our curated selection of beauty products and photography services
+              Shop our curated selection of beauty accessories and home decor
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {shopProducts.map((product, index) => (
               <motion.div
                 key={product.id}
