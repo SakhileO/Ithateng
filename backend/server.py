@@ -340,8 +340,8 @@ async def seed_services():
         {"service_id": str(uuid.uuid4()), "name": "Simple Makeup Look", "category": "Makeup", "description": "Natural everyday makeup", "price": 150.0, "duration": 45, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/mmr1dd7a_head.jpeg"},
         {"service_id": str(uuid.uuid4()), "name": "Full Glam Makeup", "category": "Makeup", "description": "Full glam with cluster lashes", "price": 200.0, "duration": 90, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/b37bdic1_makeup.jpeg"},
         
-        {"service_id": str(uuid.uuid4()), "name": "Single Polaroid", "category": "Photography", "description": "1 polaroid photo", "price": 40.0, "duration": 10, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/lo6fpv6a_Single%20Polaroid.png"},
-        {"service_id": str(uuid.uuid4()), "name": "Polaroid Bundle (2+)", "category": "Photography", "description": "R30 per photo for 2 or more", "price": 30.0, "duration": 10, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/27pdy9sv_Polaroid%20Bundle.png"},
+        {"service_id": str(uuid.uuid4()), "name": "Single Polaroid", "category": "Photography", "description": "1 polaroid photo", "price": 40.0, "duration": 10, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/6t7u3fh1_g10.jpeg"},
+        {"service_id": str(uuid.uuid4()), "name": "Polaroid Bundle (2+)", "category": "Photography", "description": "R30 per photo for 2 or more", "price": 30.0, "duration": 10, "image_url": "https://customer-assets.emergentagent.com/job_ithateng-beauty/artifacts/wlbvz1nd_g3.jpeg"},
     ]
     
     await db.services.delete_many({})
