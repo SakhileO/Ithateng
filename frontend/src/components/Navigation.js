@@ -26,6 +26,7 @@ const Navigation = () => {
 
   const links = [
     { path: '/', label: 'Home' },
+    ...(isAuthenticated() && isAdmin() ? [{ path: '/admin', label: 'Dashboard' }] : []),
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
     { path: '/shop', label: 'Shop' },
@@ -64,14 +65,16 @@ const Navigation = () => {
             
             {isAuthenticated() ? (
               <>
-                <Link
-                  to="/booking"
-                  data-testid="nav-book-now-button"
-                  className="bg-[#E91E63] text-white rounded-full px-5 py-2.5 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 flex items-center gap-2"
-                >
-                  <Calendar size={16} />
-                  Book Now
-                </Link>
+                {!isAdmin() && (
+                  <Link
+                    to="/booking"
+                    data-testid="nav-book-now-button"
+                    className="bg-[#E91E63] text-white rounded-full px-5 py-2.5 text-sm font-medium tracking-widest uppercase transition-transform hover:scale-105 flex items-center gap-2"
+                  >
+                    <Calendar size={16} />
+                    Book Now
+                  </Link>
+                )}
                 <div className="relative group">
                   <button
                     data-testid="nav-profile-button"
@@ -92,14 +95,6 @@ const Navigation = () => {
                     >
                       My Profile
                     </Link>
-                    {isAdmin() && (
-                      <Link
-                        to="/admin"
-                        className="block px-3 py-2 text-sm text-[#E91E63] hover:bg-[#F2F0E9]"
-                      >
-                        Admin Dashboard
-                      </Link>
-                    )}
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-3 py-2 text-sm text-[#78716C] hover:bg-[#F2F0E9] flex items-center gap-2"
@@ -161,17 +156,19 @@ const Navigation = () => {
               
               {isAuthenticated() ? (
                 <>
-                  <Link
-                    to="/booking"
-                    onClick={() => setIsOpen(false)}
-                    data-testid="mobile-nav-book-now"
-                    className="block bg-[#E91E63] text-white rounded-full px-6 py-3 text-center text-sm font-medium tracking-widest uppercase mt-4"
-                  >
-                    <span className="flex items-center justify-center gap-2">
-                      <Calendar size={16} />
-                      Book Now
-                    </span>
-                  </Link>
+                  {!isAdmin() && (
+                    <Link
+                      to="/booking"
+                      onClick={() => setIsOpen(false)}
+                      data-testid="mobile-nav-book-now"
+                      className="block bg-[#E91E63] text-white rounded-full px-6 py-3 text-center text-sm font-medium tracking-widest uppercase mt-4"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Calendar size={16} />
+                        Book Now
+                      </span>
+                    </Link>
+                  )}
                   <Link
                     to="/profile"
                     onClick={() => setIsOpen(false)}
@@ -179,15 +176,6 @@ const Navigation = () => {
                   >
                     My Profile
                   </Link>
-                  {isAdmin() && (
-                    <Link
-                      to="/admin"
-                      onClick={() => setIsOpen(false)}
-                      className="block text-center text-[#E91E63] py-2"
-                    >
-                      Admin Dashboard
-                    </Link>
-                  )}
                   <button
                     onClick={() => { handleLogout(); setIsOpen(false); }}
                     className="block w-full text-center text-[#78716C] py-2"
