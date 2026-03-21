@@ -25,8 +25,8 @@ const Navigation = () => {
   };
 
   const links = [
-    { path: '/', label: 'Home' },
     ...(isAuthenticated() && isAdmin() ? [{ path: '/admin', label: 'Dashboard' }] : []),
+    { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
     { path: '/shop', label: 'Shop' },
